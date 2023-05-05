@@ -1,11 +1,15 @@
 import tkinter as tk
+from tkinter import *
 from tkinter import filedialog
 import openpyxl
 from tkinter import messagebox
+from tkinter import Menu
 import logging
 
 logging.basicConfig(filename="barcode_log.txt", level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
+
+
 
 def mark_barcode_in_excel(barcode, workbook_path, barcode_column):
     try:
@@ -47,13 +51,22 @@ def browse_workbook():
     workbook_entry.insert(tk.END, file_path)
 
 def show_about_window():
-    about_text = "Barcode Scanner\n\nVersion: 1.0.2\n\nDeveloped by: Sindre\n\nDescription: Enter a barcode to mark it as green in the Excel sheet.\n \n Note: Due to Windows Locking the Excel file when it is open, the program can't run with the file open."
+    about_text = "Barcode Scanner\n\nVersion: 1.0.3\n\nDeveloped by: Sindre\n\nDescription: Enter a barcode to mark it as green in the Excel sheet.\n \n Note: Due to Windows Locking the Excel file when it is open, the program can't run with the file open."
 
     messagebox.showinfo("About", about_text)
 
 window = tk.Tk()
 window.title("Barcode Scanner")
 window.geometry("400x300")
+
+menu = Menu(window)
+file = Menu(menu, tearoff=0)
+file.add_command(label="Exit", command=exit)
+menu.add_cascade(label="File", menu=file)
+help = Menu(menu, tearoff=0)
+help.add_command(label="About", command=show_about_window)
+menu.add_cascade(label="Help", menu=help)
+window.config(menu=menu)
 
 label_workbook = tk.Label(window, text="Workbook Path:")
 label_workbook.pack(pady=10)
@@ -75,8 +88,5 @@ barcode_entry = tk.Entry(window)
 barcode_entry.pack()
 
 barcode_entry.bind("<Return>", scan_barcode)  # Bind the Return key event to scan_barcode function
-
-about_button = tk.Button(window, text="About", command=show_about_window)
-about_button.pack(pady=10)
 
 window.mainloop()
