@@ -2,6 +2,10 @@ import tkinter as tk
 from tkinter import filedialog
 import openpyxl
 from tkinter import messagebox
+import logging
+
+logging.basicConfig(filename="barcode_log.txt", level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 
 def mark_barcode_in_excel(barcode, workbook_path, barcode_column):
     try:
@@ -20,10 +24,15 @@ def mark_barcode_in_excel(barcode, workbook_path, barcode_column):
 
         if not barcode_found:
             messagebox.showerror("Error", "Barcode not found.")
+            logging.error(f"Barcode not found: {barcode}")
+        else:
+            logging.info(f"Barcode marked: {barcode}")
     except FileNotFoundError:
         messagebox.showerror("Error", "Workbook not found.")
+        logging.error(f"Workbook not found: {workbook_path}")
     except Exception as e:
         messagebox.showerror("Error", str(e))
+        logging.error(f"Error marking barcode: {barcode}. Error: {str(e)}")
 
 def scan_barcode(event):
     barcode = barcode_entry.get()
@@ -38,7 +47,7 @@ def browse_workbook():
     workbook_entry.insert(tk.END, file_path)
 
 def show_about_window():
-    about_text = "Barcode Scanner\n\nVersion: 1.0.1\n\nDeveloped by: Sindre\n\nDescription: Enter a barcode to mark it as green in the Excel sheet."
+    about_text = "Barcode Scanner\n\nVersion: 1.0.1\n\nDeveloped by: Sindre\n\nDescription: Enter a barcode to mark it as green in the Excel sheet.\n \n Note: Due to Windows Locking the Excel file when it is open, the program can't run with the file open."
 
     messagebox.showinfo("About", about_text)
 
@@ -50,10 +59,10 @@ label_workbook = tk.Label(window, text="Workbook Path:")
 label_workbook.pack(pady=10)
 
 workbook_entry = tk.Entry(window)
-workbook_entry.pack( padx=5)
+workbook_entry.pack(padx=5)
 
 browse_button = tk.Button(window, text="Browse", command=browse_workbook)
-browse_button.pack()
+browse_button.pack(pady=5)
 
 label_column = tk.Label(window, text="Barcode Column:")
 label_column.pack(pady=10)
