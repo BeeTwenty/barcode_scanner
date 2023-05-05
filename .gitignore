@@ -1,0 +1,10 @@
+build
+barcode_scanner.spec
+barcode_log.txt
+dist/barcode_scanner.exe
+build/barcode_scanner/xref-barcode_scanner.html
+build/barcode_scanner/warn-barcode_scanner.txt
+build/barcode_scanner/PKG-00.toc
+build/barcode_scanner/EXE-00.toc
+build/barcode_scanner/barcode_scanner.pkg
+build/barcode_scanner/Analysis-00.toc
