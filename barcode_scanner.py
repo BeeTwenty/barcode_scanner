@@ -6,38 +6,48 @@ from tkinter import messagebox
 from tkinter import Menu
 import logging
 
+# Add logging to file and console with timestamp and log level and format 
 logging.basicConfig(filename="barcode_log.txt", level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-
+# Mark barcode in Excel sheet
 def mark_barcode_in_excel(barcode, workbook_path, barcode_column):
     try:
         workbook = openpyxl.load_workbook(workbook_path)
         sheet = workbook.active
-
+        
         barcode_found = False
 
+        # Loop through all cells in the barcode column
         for cell in sheet[barcode_column]:
             if cell.value == barcode:
                 cell.fill = openpyxl.styles.PatternFill(start_color="00FF00", fill_type="solid")  # Mark cell as green
                 barcode_found = True
 
+        # Save the workbook
         workbook.save(workbook_path)
         workbook.close()
 
+        # Show error message if barcode not found or log barcode marked
         if not barcode_found:
             messagebox.showerror("Error", "Barcode not found.")
             logging.error(f"Barcode not found: {barcode}")
         else:
             logging.info(f"Barcode marked: {barcode}")
+
+    # Show error message if workbook not found and log error
     except FileNotFoundError:
         messagebox.showerror("Error", "Workbook not found.")
         logging.error(f"Workbook not found: {workbook_path}")
+    
+    # Show error message if any other error and log error
     except Exception as e:
         messagebox.showerror("Error", str(e))
         logging.error(f"Error marking barcode: {barcode}. Error: {str(e)}")
 
+
+# Scan barcode from entry field and mark it in Excel sheet
 def scan_barcode(event):
     barcode = barcode_entry.get()
     wb_path = workbook_entry.get()
@@ -45,45 +55,56 @@ def scan_barcode(event):
     mark_barcode_in_excel(barcode, wb_path, bc_column)
     barcode_entry.delete(0, tk.END)  # Clear the barcode entry field after scanning
 
+# Browse for workbook file
 def browse_workbook():
     file_path = filedialog.askopenfilename(filetypes=[("Excel Files", "*.xlsx;*.xls")])
     workbook_entry.delete(0, tk.END)
     workbook_entry.insert(tk.END, file_path)
 
+# Show about window with information about the program
 def show_about_window():
     about_text = "Barcode Scanner\n\nVersion: 1.0.3\n\nDeveloped by: Sindre\n\nDescription: Enter a barcode to mark it as green in the Excel sheet.\n \n Note: Due to Windows Locking the Excel file when it is open, the program can't run with the file open."
 
     messagebox.showinfo("About", about_text)
 
+# Create the main window
 window = tk.Tk()
 window.title("Barcode Scanner")
 window.geometry("400x300")
 
-menu = Menu(window)
-help = Menu(menu, tearoff=0)
-help.add_command(label="About", command=show_about_window)
-menu.add_cascade(label="Help", menu=help)
-window.config(menu=menu)
+# Create the menu bar
+menu = Menu(window) # Create the menu bar
+help = Menu(menu, tearoff=0) # Create the Help menu item
+help.add_command(label="About", command=show_about_window) # Add About menu item to Help menu
+menu.add_cascade(label="Help", menu=help) # Add Help menu to menu bar
+window.config(menu=menu) # Add menu bar to window
 
-label_workbook = tk.Label(window, text="Workbook Path:")
-label_workbook.pack(pady=10)
+# Create the GUI
+label_workbook = tk.Label(window, text="Workbook Path:") # Create the workbook path label
+label_workbook.pack(pady=10) # Add padding to the label to make it look better
 
-workbook_entry = tk.Entry(window)
+# Create the workbook path entry field
+workbook_entry = tk.Entry(window) # Create the workbook path entry field
 workbook_entry.pack(padx=5)
 
+# Create the browse button to browse for workbook file
 browse_button = tk.Button(window, text="Browse", command=browse_workbook)
 browse_button.pack(pady=5)
 
+# Create the barcode column entry field 
 label_column = tk.Label(window, text="Barcode Column:")
 label_column.pack(pady=10)
 column_entry = tk.Entry(window)
 column_entry.pack()
 
+# Create the barcode entry field 
 label_barcode = tk.Label(window, text="Scan Barcode:")
 label_barcode.pack(pady=10)
 barcode_entry = tk.Entry(window)
 barcode_entry.pack()
 
+# Bind the Return key event to scan_barcode function
 barcode_entry.bind("<Return>", scan_barcode)  # Bind the Return key event to scan_barcode function
 
+# Run the main window
 window.mainloop()
