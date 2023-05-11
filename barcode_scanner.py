@@ -19,6 +19,7 @@ def check_updates():
         # Fetch the latest version from the version URL
         response = requests.get(VERSION_URL)
         latest_version = response.text.strip()
+        
 
         # Compare the current version with the latest version
         if latest_version != CURRENT_VERSION:
@@ -93,7 +94,8 @@ window.geometry("400x300") # Set the window size
 # Create the menu bar
 menu = Menu(window) # Create the menu bar
 help = Menu(menu, tearoff=0) # Create the Help menu item
-help.add_command(label="About", command=show_about_window) # Add About menu item to Help menu
+help.add_command(label="About", command=show_about_window)
+help.add_command(label="Update", command=check_updates) # Add About menu item to Help menu
 menu.add_cascade(label="Help", menu=help) # Add Help menu to menu bar
 window.config(menu=menu) # Add menu bar to window
 
@@ -126,3 +128,4 @@ barcode_entry.bind("<Return>", scan_barcode)
 
 # Run the main window
 window.mainloop()
+
