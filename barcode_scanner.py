@@ -65,12 +65,12 @@ def browse_workbook():
 def show_about_window():
     about_text = "Barcode Scanner\n\nVersion: 1.0.3\n\nDeveloped by: Sindre\n\nDescription: Enter a barcode to mark it as green in the Excel sheet.\n \n Note: Due to Windows Locking the Excel file when it is open, the program can't run with the file open."
 
-    messagebox.showinfo("About", about_text)
+    messagebox.showinfo("About", about_text) 
 
 # Create the main window
-window = tk.Tk()
-window.title("Barcode Scanner")
-window.geometry("400x300")
+window = tk.Tk() # Create the main window
+window.title("Barcode Scanner") # Set the window title 
+window.geometry("400x300") # Set the window size 
 
 # Create the menu bar
 menu = Menu(window) # Create the menu bar
@@ -104,7 +104,7 @@ barcode_entry = tk.Entry(window)
 barcode_entry.pack()
 
 # Bind the Return key event to scan_barcode function
-barcode_entry.bind("<Return>", scan_barcode)  # Bind the Return key event to scan_barcode function
+barcode_entry.bind("<Return>", scan_barcode)
 
 # Run the main window
 window.mainloop()
