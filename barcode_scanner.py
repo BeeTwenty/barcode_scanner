@@ -5,11 +5,29 @@ import openpyxl
 from tkinter import messagebox
 from tkinter import Menu
 import logging
+import requests
+
+CURRENT_VERSION = "1.0.3"
+VERSION_URL = "https://github.com/BeeTwenty/barcode_scanner/blob/master/version.txt"
 
 # Add logging to file and console with timestamp and log level and format 
 logging.basicConfig(filename="barcode_log.txt", level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
+def check_updates():
+    try:
+        # Fetch the latest version from the version URL
+        response = requests.get(VERSION_URL)
+        latest_version = response.text.strip()
+
+        # Compare the current version with the latest version
+        if latest_version != CURRENT_VERSION:
+            messagebox.showinfo("Update Available", "A new version ({}) is available. Please update.".format(latest_version))
+        else:
+            messagebox.showinfo("Up to Date", "You have the latest version of the program.")
+    
+    except requests.exceptions.RequestException:
+        messagebox.showerror("Error", "Failed to check for updates.")
 
 # Mark barcode in Excel sheet
 def mark_barcode_in_excel(barcode, workbook_path, barcode_column):
