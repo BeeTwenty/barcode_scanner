@@ -3,17 +3,17 @@
 
 #define MyAppName "Barcode Scanner"
 #define MyAppVersion "1.0.4"
-#define MyAppPublisher "BeeTwenty"
+#define MyAppPublisher "Sindre Berge"
 #define MyAppURL "https://github.com/BeeTwenty/barcode_scanner"
 #define MyAppExeName "barcode_scanner.exe"
-#define MyAppAssocName "My Program File"
+#define MyAppAssocName MyAppName + " File"
 #define MyAppAssocExt ".myp"
 #define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{234C1F6A-135B-46E3-BB27-9FA750CA9170}
+AppId={{DED19133-B841-4F0C-8F54-AE8E377D874D}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -25,9 +25,9 @@ DefaultDirName={autopf}\{#MyAppName}
 ChangesAssociations=yes
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-; Uncomment the following line to run in non administrative install mode (install for current user only.)
+LicenseFile=C:\Users\SBerge1\Documents\barcode_scanner\LICENSE
+; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
-;PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=C:\Users\SBerge1\Documents\barcode_scanner\setup
 OutputBaseFilename=BarcodeSetup
 SetupIconFile=C:\Users\SBerge1\Documents\barcode_scanner\barcode.ico
@@ -54,8 +54,6 @@ Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}"; ValueType: string; Value
 Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\{#MyAppExeName},0"
 Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" ""%1"""
 Root: HKA; Subkey: "Software\Classes\Applications\{#MyAppExeName}\SupportedTypes"; ValueType: string; ValueName: ".myp"; ValueData: ""
-
-
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"

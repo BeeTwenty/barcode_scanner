@@ -1,3 +1,6 @@
+1.0.5
++ Removed Messagebox if version is up to date. at startup.
+___
 1.0.4
 + Added a function to check if there is a new version.
 + Added a function to download the new version.

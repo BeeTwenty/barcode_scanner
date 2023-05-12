@@ -9,7 +9,7 @@ import requests
 import webbrowser
 #developed by Sindre under the MIT license
 
-CURRENT_VERSION = "1.0.4"
+CURRENT_VERSION = "1.0.5"
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
 DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/blob/master/setup/Setup.exe"
 
@@ -43,6 +43,40 @@ def check_updates():
         
         else:
             messagebox.showinfo("Up to Date", "You have the latest version of the program.")
+            logging.info("Up to date. ( {} )".format(latest_version))
+
+    except requests.exceptions.RequestException:
+        messagebox.showerror("Error", "Failed to check for updates.")
+        logging.error("Failed to check for updates.")
+
+
+
+def check_updates_at_start():
+    logging.info("Checking for updates...")
+    try:
+        # Fetch the latest version from the version URL
+        response = requests.get(VERSION_URL)
+        latest_version = response.text.strip()
+        logging.info(f"Latest version: {latest_version}")      
+  
+
+        # Compare the current version with the latest version
+        if latest_version != CURRENT_VERSION:
+            messagebox.showinfo("Update Available", "A new version ({}) is available. Please update.".format(latest_version))
+            messagebox.showinfo("Download Version ({})".format(latest_version), "Please click the link to download the latest version.")
+            
+           
+            logging.info("Update available. Please update. ( {} )".format(latest_version))
+
+            def open_download_link():
+                webbrowser.open(DOWNLOAD_URL)
+            download_label = tk.Button(window, text="Download Version ({})".format(latest_version), fg="blue", cursor="hand2", command=open_download_link)
+            download_label.pack()
+
+                
+        
+        else:
+            
             logging.info("Up to date. ( {} )".format(latest_version))
 
     except requests.exceptions.RequestException:
@@ -152,7 +186,7 @@ barcode_entry.pack()
 # Bind the Return key event to scan_barcode function
 barcode_entry.bind("<Return>", scan_barcode)
 
-check_updates()
+check_updates_at_start()
 
 # Run the main window
 window.mainloop()
