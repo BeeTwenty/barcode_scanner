@@ -14,13 +14,16 @@ import webbrowser
 CURRENT_VERSION = "1.0.7"
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
 DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/blob/master/setup/BarcodeSetup.exe"
-logging.info("Barcode Scanner started. Version: {}".format(CURRENT_VERSION))
 
-# Add logging to file and console with timestamp and log level and format 
+
+# Add logging to file and console with timestamp and log level and format  (INFO and ERROR)
 logging.basicConfig(filename="barcode_log.txt", level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename="barcode_log_err.txt", level=logging.ERROR,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 def check_updates():
+    logging.info("Barcode Scanner started. Version: {}".format(CURRENT_VERSION))
     logging.info("Checking for updates...")
     try:
         # Fetch the latest version from the version URL

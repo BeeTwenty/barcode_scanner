@@ -62,3 +62,17 @@
 2023-05-12 12:54:49,973 - INFO - Checking for updates...
 2023-05-12 12:54:50,041 - INFO - Latest version: 1.0.5
 2023-05-12 12:54:50,041 - INFO - Up to date. ( 1.0.5 )
+2023-05-12 13:25:03,547 - INFO - Main window created.
+2023-05-12 13:25:03,557 - INFO - Checking for updates...
+2023-05-12 13:25:03,656 - INFO - Latest version: 1.0.7
+2023-05-12 13:25:03,656 - INFO - Up to date. ( 1.0.7 )
+2023-05-12 13:28:04,384 - INFO - Main window created.
+2023-05-12 13:28:04,395 - INFO - Checking for updates...
+2023-05-12 13:28:04,490 - INFO - Latest version: 1.0.7
+2023-05-12 13:28:04,491 - INFO - Up to date. ( 1.0.7 )
+2023-05-12 13:28:12,777 - ERROR - Error marking barcode: e. Error: openpyxl does not support  file format, please check you can open it with Excel first. Supported formats are: .xlsx,.xlsm,.xltx,.xltm
+2023-05-12 13:28:12,777 - INFO - Barcode scanned: e
+2023-05-12 13:28:18,954 - INFO - Workbook opened: C:/Users/SBerge1/Documents/Premium personal monthly budget2.xlsx
+2023-05-12 13:28:18,989 - INFO - Workbook saved: C:/Users/SBerge1/Documents/Premium personal monthly budget2.xlsx and closed.
+2023-05-12 13:28:19,992 - ERROR - Barcode not found: sfdv
+2023-05-12 13:28:19,993 - INFO - Barcode scanned: sfdv
