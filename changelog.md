@@ -1,3 +1,6 @@
+1.0.6
++ Fixed Download Link
+___
 1.0.5
 + Removed Messagebox if version is up to date. at startup.
 ___

@@ -9,9 +9,9 @@ import requests
 import webbrowser
 #developed by Sindre under the MIT license
 
-CURRENT_VERSION = "1.0.5"
+CURRENT_VERSION = "1.0.6"
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
-DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/blob/master/setup/Setup.exe"
+DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/blob/master/setup/BarcodeSetup.exe"
 
 # Add logging to file and console with timestamp and log level and format 
 logging.basicConfig(filename="barcode_log.txt", level=logging.INFO,
