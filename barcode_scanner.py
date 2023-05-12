@@ -139,7 +139,7 @@ def browse_workbook():
 
 # Show about window with information about the program
 def show_about_window():
-    about_text = "Barcode Scanner\n\nVersion: 1.0.4\n\nDeveloped by: Sindre\n\nDescription: Enter a barcode to mark it as green in the Excel sheet.\n \n Note: Due to Windows Locking the Excel file when it is open, the program can't run with the file open."
+    about_text = "Barcode Scanner\n\nVersion: {}\n\nDeveloped by: Sindre\n\nDescription: Enter a barcode to mark it as green in the Excel sheet.\n \n Note: Due to Windows Locking the Excel file when it is open, the program can't run with the file open.".format(CURRENT_VERSION)
 
     messagebox.showinfo("About", about_text) 
 

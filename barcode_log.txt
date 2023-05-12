@@ -56,3 +56,9 @@
 2023-05-12 12:48:37,768 - INFO - Checking for updates...
 2023-05-12 12:48:37,831 - INFO - Latest version: 1.0.4
 2023-05-12 12:48:39,178 - INFO - Up to date. ( 1.0.4 )
+2023-05-12 12:54:27,506 - INFO - Checking for updates...
+2023-05-12 12:54:27,771 - INFO - Latest version: 1.0.5
+2023-05-12 12:54:27,771 - INFO - Up to date. ( 1.0.5 )
+2023-05-12 12:54:49,973 - INFO - Checking for updates...
+2023-05-12 12:54:50,041 - INFO - Latest version: 1.0.5
+2023-05-12 12:54:50,041 - INFO - Up to date. ( 1.0.5 )
