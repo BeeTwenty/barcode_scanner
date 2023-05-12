@@ -1,3 +1,7 @@
+1.0.9
++ Added yes/no to update
+- Removed old Download button 
+___
 1.0.8
 + Crash fix.
 ___

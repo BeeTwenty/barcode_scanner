@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Barcode Scanner"
-#define MyAppVersion "1.0.8"
+#define MyAppVersion "1.0.9"
 #define MyAppPublisher "Sindre Berge"
 #define MyAppURL "https://github.com/BeeTwenty/barcode_scanner"
 #define MyAppExeName "barcode_scanner.exe"

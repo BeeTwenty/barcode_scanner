@@ -76,3 +76,59 @@
 2023-05-12 13:28:18,989 - INFO - Workbook saved: C:/Users/SBerge1/Documents/Premium personal monthly budget2.xlsx and closed.
 2023-05-12 13:28:19,992 - ERROR - Barcode not found: sfdv
 2023-05-12 13:28:19,993 - INFO - Barcode scanned: sfdv
+2023-05-12 14:45:15,701 - INFO - Main window created.
+2023-05-12 14:45:15,712 - INFO - Checking for updates...
+2023-05-12 14:45:16,103 - INFO - Latest version: 1.0.8
+2023-05-12 14:45:20,866 - INFO - Update available. Please update. ( 1.0.8 )
+2023-05-12 14:45:31,107 - INFO - Main window created.
+2023-05-12 14:45:31,117 - INFO - Checking for updates...
+2023-05-12 14:45:31,188 - INFO - Latest version: 1.0.8
+2023-05-12 14:45:33,048 - INFO - Update available. Please update. ( 1.0.8 )
+2023-05-12 14:45:34,736 - INFO - Barcode Scanner started. Version: 1.0.5
+2023-05-12 14:45:34,736 - INFO - Checking for updates...
+2023-05-12 14:45:34,795 - INFO - Latest version: 1.0.8
+2023-05-12 14:45:54,881 - INFO - Main window created.
+2023-05-12 14:45:54,890 - INFO - Checking for updates...
+2023-05-12 14:45:54,956 - INFO - Latest version: 1.0.8
+2023-05-12 14:45:57,483 - INFO - Update available. Please update. ( 1.0.8 )
+2023-05-12 14:45:59,206 - INFO - Barcode Scanner started. Version: 1.0.5
+2023-05-12 14:45:59,207 - INFO - Checking for updates...
+2023-05-12 14:45:59,268 - INFO - Latest version: 1.0.8
+2023-05-12 14:46:00,584 - INFO - Update available. Please update. ( 1.0.8 )
+2023-05-12 14:46:27,646 - INFO - Main window created.
+2023-05-12 14:46:27,656 - INFO - Checking for updates...
+2023-05-12 14:46:27,729 - INFO - Latest version: 1.0.8
+2023-05-12 14:46:29,941 - INFO - Update available. Please update. ( 1.0.8 )
+2023-05-12 14:47:03,933 - INFO - Main window created.
+2023-05-12 14:47:03,943 - INFO - Checking for updates...
+2023-05-12 14:47:04,013 - INFO - Latest version: 1.0.8
+2023-05-12 14:47:05,709 - INFO - Update available. Please update. ( 1.0.8 )
+2023-05-12 14:47:27,967 - INFO - Main window created.
+2023-05-12 14:47:27,977 - INFO - Checking for updates...
+2023-05-12 14:47:28,044 - INFO - Latest version: 1.0.8
+2023-05-12 14:47:29,411 - INFO - Update available. Please update. ( 1.0.8 )
+2023-05-12 14:47:32,117 - INFO - Barcode Scanner started. Version: 1.0.5
+2023-05-12 14:47:32,117 - INFO - Checking for updates...
+2023-05-12 14:47:32,178 - INFO - Latest version: 1.0.8
+2023-05-12 14:47:33,871 - INFO - Update available. Please update. ( 1.0.8 )
+2023-05-12 14:50:48,169 - INFO - Main window created.
+2023-05-12 14:50:48,180 - INFO - Checking for updates...
+2023-05-12 14:50:48,526 - INFO - Latest version: 1.0.8
+2023-05-12 14:50:55,034 - INFO - Update available. Please update. ( 1.0.8 )
+2023-05-12 14:51:10,306 - INFO - Main window created.
+2023-05-12 14:51:10,316 - INFO - Checking for updates...
+2023-05-12 14:51:10,395 - INFO - Latest version: 1.0.8
+2023-05-12 14:51:16,772 - INFO - Update available. Please update. ( 1.0.8 )
+2023-05-12 14:51:20,467 - INFO - About window opened.
+2023-05-12 14:54:20,123 - INFO - Main window created.
+2023-05-12 14:54:20,133 - INFO - Checking for updates...
+2023-05-12 14:54:20,202 - INFO - Latest version: 1.0.8
+2023-05-12 14:54:23,031 - INFO - Update available. Please update. ( 1.0.8 )
+2023-05-12 14:56:53,727 - INFO - Main window created.
+2023-05-12 14:56:53,736 - INFO - Checking for updates...
+2023-05-12 14:56:54,046 - INFO - Latest version: 1.0.8
+2023-05-12 14:56:55,265 - INFO - Update available. Please update. ( 1.0.8 )
+2023-05-12 14:58:50,828 - INFO - Main window created.
+2023-05-12 14:58:50,838 - INFO - Checking for updates...
+2023-05-12 14:58:50,911 - INFO - Latest version: 1.0.8
+2023-05-12 14:58:52,580 - INFO - Update available. Please update. ( 1.0.8 )

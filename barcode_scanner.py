@@ -1,9 +1,6 @@
 import tkinter as tk
-from tkinter import *
-from tkinter import filedialog
+from tkinter import filedialog, messagebox, Menu
 import openpyxl
-from tkinter import messagebox
-from tkinter import Menu
 import logging
 import requests
 import webbrowser
@@ -11,15 +8,13 @@ import webbrowser
 
 
 # set the version and the version URL and the download URL
-CURRENT_VERSION = "1.0.8"
+CURRENT_VERSION = "1.0.9"
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
-DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/blob/master/setup/BarcodeSetup.exe"
+DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/releases/download/Production/BarcodeSetup.exe"
 
 
 # Add logging to file and console with timestamp and log level and format  (INFO and ERROR)
 logging.basicConfig(filename="barcode_log.txt", level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
-logging.basicConfig(filename="barcode_log_err.txt", level=logging.ERROR,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 def check_updates():
@@ -34,16 +29,16 @@ def check_updates():
 
         # Compare the current version with the latest version
         if latest_version != CURRENT_VERSION:
-            messagebox.showinfo("Update Available", "A new version ({}) is available. Please update.".format(latest_version))
-            messagebox.showinfo("Download Version ({})".format(latest_version), "Please click the link to download the latest version.")
+            d_response = messagebox.askquestion("Update Available", "A new version ({}) is available. Do you Want to download now?.".format(latest_version))
+            if d_response == "yes":
+                webbrowser.open(DOWNLOAD_URL)
+            
             
            
             logging.info("Update available. Please update. ( {} )".format(latest_version))
 
-            def open_download_link():
-                webbrowser.open(DOWNLOAD_URL)
-            download_label = tk.Button(window, text="Download Version ({})".format(latest_version), fg="blue", cursor="hand2", command=open_download_link)
-            download_label.pack()
+            
+            
 
                 
         
@@ -68,16 +63,14 @@ def check_updates_at_start():
 
         # Compare the current version with the latest version
         if latest_version != CURRENT_VERSION:
-            messagebox.showinfo("Update Available", "A new version ({}) is available. Please update.".format(latest_version))
-            messagebox.showinfo("Download Version ({})".format(latest_version), "Please click the link to download the latest version.")
+            d_response = messagebox.askquestion("Update Available", "A new version ({}) is available. Do you Want to download now?.".format(latest_version))
+            if d_response == "yes":
+                webbrowser.open(DOWNLOAD_URL)
             
            
             logging.info("Update available. Please update. ( {} )".format(latest_version))
 
-            def open_download_link():
-                webbrowser.open(DOWNLOAD_URL)
-            download_label = tk.Button(window, text="Download Version ({})".format(latest_version), fg="blue", cursor="hand2", command=open_download_link)
-            download_label.pack()
+            
 
                 
         
