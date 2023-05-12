@@ -7,6 +7,7 @@ from tkinter import Menu
 import logging
 import requests
 import webbrowser
+#developed by Sindre under the MIT license
 
 CURRENT_VERSION = "1.0.4"
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
