@@ -1,3 +1,6 @@
+1.0.7
++ Added more Logging.
+___
 1.0.6
 + Fixed Download Link
 ___

@@ -9,9 +9,12 @@ import requests
 import webbrowser
 #developed by Sindre under the MIT license
 
-CURRENT_VERSION = "1.0.6"
+
+# set the version and the version URL and the download URL
+CURRENT_VERSION = "1.0.7"
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
 DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/blob/master/setup/BarcodeSetup.exe"
+logging.info("Barcode Scanner started. Version: {}".format(CURRENT_VERSION))
 
 # Add logging to file and console with timestamp and log level and format 
 logging.basicConfig(filename="barcode_log.txt", level=logging.INFO,
@@ -92,7 +95,7 @@ def mark_barcode_in_excel(barcode, workbook_path, barcode_column):
     try:
         workbook = openpyxl.load_workbook(workbook_path)
         sheet = workbook.active
-        
+        logging.info(f"Workbook opened: {workbook_path}")
         barcode_found = False
 
         # Loop through all cells in the barcode column
@@ -100,10 +103,12 @@ def mark_barcode_in_excel(barcode, workbook_path, barcode_column):
             if cell.value == barcode:
                 cell.fill = openpyxl.styles.PatternFill(start_color="00FF00", fill_type="solid")  # Mark cell as green
                 barcode_found = True
+                logging.info(f"Barcode found: {barcode}")
 
         # Save the workbook
         workbook.save(workbook_path)
         workbook.close()
+        logging.info(f"Workbook saved: {workbook_path} and closed.")
 
         # Show error message if barcode not found or log barcode marked
         if not barcode_found:
@@ -130,6 +135,7 @@ def scan_barcode(event):
     bc_column = column_entry.get()
     mark_barcode_in_excel(barcode, wb_path, bc_column)
     barcode_entry.delete(0, tk.END)  # Clear the barcode entry field after scanning
+    logging.info(f"Barcode scanned: {barcode}")
 
 # Browse for workbook file
 def browse_workbook():
@@ -142,13 +148,14 @@ def show_about_window():
     about_text = "Barcode Scanner\n\nVersion: {}\n\nDeveloped by: Sindre\n\nDescription: Enter a barcode to mark it as green in the Excel sheet.\n \n Note: Due to Windows Locking the Excel file when it is open, the program can't run with the file open.".format(CURRENT_VERSION)
 
     messagebox.showinfo("About", about_text) 
+    logging.info("About window opened.")
 
 # Create the main window
 window = tk.Tk() # Create the main window
 window.title("Barcode Scanner") # Set the window title 
 window.geometry("400x300") # Set the window size 
 tk.Tk.iconbitmap(window, default="barcode.ico") # Set the window icon
-
+logging.info("Main window created.")
 # Create the menu bar
 menu = Menu(window) # Create the menu bar
 help = Menu(menu, tearoff=0) # Create the Help menu item
