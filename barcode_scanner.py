@@ -6,29 +6,51 @@ from tkinter import messagebox
 from tkinter import Menu
 import logging
 import requests
+import webbrowser
 
-CURRENT_VERSION = "1.0.3"
-VERSION_URL = "https://github.com/BeeTwenty/barcode_scanner/blob/master/version.txt"
+CURRENT_VERSION = "1.0.4"
+VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
+DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/blob/master/setup/Setup.exe"
 
 # Add logging to file and console with timestamp and log level and format 
 logging.basicConfig(filename="barcode_log.txt", level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 def check_updates():
+    logging.info("Checking for updates...")
     try:
         # Fetch the latest version from the version URL
         response = requests.get(VERSION_URL)
         latest_version = response.text.strip()
-        
+        logging.info(f"Latest version: {latest_version}")      
+  
 
         # Compare the current version with the latest version
         if latest_version != CURRENT_VERSION:
             messagebox.showinfo("Update Available", "A new version ({}) is available. Please update.".format(latest_version))
+            messagebox.showinfo("Download Version ({})".format(latest_version), "Please click the link to download the latest version.")
+            
+           
+            logging.info("Update available. Please update. ( {} )".format(latest_version))
+
+            def open_download_link():
+                webbrowser.open(DOWNLOAD_URL)
+            download_label = tk.Button(window, text="Download Version ({})".format(latest_version), fg="blue", cursor="hand2", command=open_download_link)
+            download_label.pack()
+
+                
+        
         else:
             messagebox.showinfo("Up to Date", "You have the latest version of the program.")
-    
+            logging.info("Up to date. ( {} )".format(latest_version))
+
     except requests.exceptions.RequestException:
         messagebox.showerror("Error", "Failed to check for updates.")
+        logging.error("Failed to check for updates.")
+
+     
+        
+
 
 # Mark barcode in Excel sheet
 def mark_barcode_in_excel(barcode, workbook_path, barcode_column):
@@ -82,7 +104,7 @@ def browse_workbook():
 
 # Show about window with information about the program
 def show_about_window():
-    about_text = "Barcode Scanner\n\nVersion: 1.0.3\n\nDeveloped by: Sindre\n\nDescription: Enter a barcode to mark it as green in the Excel sheet.\n \n Note: Due to Windows Locking the Excel file when it is open, the program can't run with the file open."
+    about_text = "Barcode Scanner\n\nVersion: 1.0.4\n\nDeveloped by: Sindre\n\nDescription: Enter a barcode to mark it as green in the Excel sheet.\n \n Note: Due to Windows Locking the Excel file when it is open, the program can't run with the file open."
 
     messagebox.showinfo("About", about_text) 
 
@@ -90,6 +112,7 @@ def show_about_window():
 window = tk.Tk() # Create the main window
 window.title("Barcode Scanner") # Set the window title 
 window.geometry("400x300") # Set the window size 
+tk.Tk.iconbitmap(window, default="barcode.ico") # Set the window icon
 
 # Create the menu bar
 menu = Menu(window) # Create the menu bar
@@ -123,9 +146,14 @@ label_barcode.pack(pady=10)
 barcode_entry = tk.Entry(window)
 barcode_entry.pack()
 
+
+
 # Bind the Return key event to scan_barcode function
 barcode_entry.bind("<Return>", scan_barcode)
 
+check_updates()
+
 # Run the main window
 window.mainloop()
+
 

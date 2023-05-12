@@ -1,3 +1,8 @@
+1.0.4
++ Added a function to check if there is a new version.
++ Added a function to download the new version.
++ Added button in help menu to check for new version.
+___
 1.0.3
 + Added Menu
 ___
