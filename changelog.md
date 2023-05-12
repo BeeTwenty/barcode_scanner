@@ -1,4 +1,7 @@
 1.0.7
++ Crash fix.
+___
+1.0.7
 + Added more Logging.
 ___
 1.0.6

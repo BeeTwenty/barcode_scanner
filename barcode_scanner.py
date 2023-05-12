@@ -11,7 +11,7 @@ import webbrowser
 
 
 # set the version and the version URL and the download URL
-CURRENT_VERSION = "1.0.7"
+CURRENT_VERSION = "1.0.8"
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
 DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/blob/master/setup/BarcodeSetup.exe"
 
