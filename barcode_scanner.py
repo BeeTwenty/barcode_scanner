@@ -8,7 +8,7 @@ import webbrowser
 
 
 # set the version and the version URL and the download URL
-CURRENT_VERSION = "1.0.9"
+CURRENT_VERSION = "1.0.0"
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
 DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/releases/download/Production/BarcodeSetup.exe"
 
@@ -28,7 +28,7 @@ def check_updates():
   
 
         # Compare the current version with the latest version
-        if latest_version != CURRENT_VERSION:
+        if latest_version > CURRENT_VERSION:
             d_response = messagebox.askquestion("Update Available", "A new version ({}) is available. Do you Want to download now?.".format(latest_version))
             if d_response == "yes":
                 webbrowser.open(DOWNLOAD_URL)
@@ -62,7 +62,7 @@ def check_updates_at_start():
   
 
         # Compare the current version with the latest version
-        if latest_version != CURRENT_VERSION:
+        if latest_version > CURRENT_VERSION:
             d_response = messagebox.askquestion("Update Available", "A new version ({}) is available. Do you Want to download now?.".format(latest_version))
             if d_response == "yes":
                 webbrowser.open(DOWNLOAD_URL)
