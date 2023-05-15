@@ -11,7 +11,7 @@ import threading
 
 
 # set the version and the version URL and the download URL
-CURRENT_VERSION = "1.0.2"
+CURRENT_VERSION = "1.0.3"
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
 DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/releases/download/Production/BarcodeSetup.exe"
 
