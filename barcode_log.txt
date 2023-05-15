@@ -172,3 +172,34 @@
 2023-05-15 09:35:18,185 - INFO - Update available. Please update. ( 1.0.2 )
 2023-05-15 09:35:23,914 - INFO - Download completed.
 2023-05-15 09:35:28,936 - INFO - Update installed successfully
+2023-05-15 21:39:16,713 - INFO - Main window created.
+2023-05-15 21:39:16,733 - INFO - Barcode Scanner started. Version: 1.0.2
+2023-05-15 21:39:16,733 - INFO - Checking for updates...
+2023-05-15 21:39:17,019 - INFO - Latest version: 1.0.2
+2023-05-15 21:39:17,019 - INFO - Up to date. ( 1.0.2 )
+2023-05-15 21:39:23,768 - INFO - About window opened.
+2023-05-15 21:39:37,944 - INFO - Main window created.
+2023-05-15 21:39:37,949 - INFO - Barcode Scanner started. Version: 1.0.2
+2023-05-15 21:39:37,949 - INFO - Checking for updates...
+2023-05-15 21:39:37,996 - INFO - Latest version: 1.0.2
+2023-05-15 21:39:37,996 - INFO - Up to date. ( 1.0.2 )
+2023-05-15 21:39:40,924 - INFO - Checking for updates...
+2023-05-15 21:39:40,960 - INFO - Latest version: 1.0.2
+2023-05-15 21:39:41,990 - INFO - Up to date. ( 1.0.2 )
+2023-05-15 21:39:47,062 - INFO - Main window created.
+2023-05-15 21:39:47,069 - INFO - Barcode Scanner started. Version: 1.0.1
+2023-05-15 21:39:47,069 - INFO - Checking for updates...
+2023-05-15 21:39:47,112 - INFO - Latest version: 1.0.2
+2023-05-15 21:39:48,661 - INFO - Downloading update...
+2023-05-15 21:39:48,661 - INFO - Update available. Please update. ( 1.0.2 )
+2023-05-15 21:39:56,239 - INFO - Download completed.
+2023-05-15 21:40:09,709 - INFO - Update installed successfully. Restarting application.
+2023-05-15 21:40:09,709 - INFO - Update installed successfully
+2023-05-15 23:27:02,914 - INFO - Main window created.
+2023-05-15 23:27:02,921 - INFO - Barcode Scanner started. Version: 1.0.2
+2023-05-15 23:27:02,921 - INFO - Checking for updates...
+2023-05-15 23:27:03,161 - INFO - Latest version: 1.0.2
+2023-05-15 23:27:03,162 - INFO - Up to date. ( 1.0.2 )
+2023-05-15 23:27:05,178 - INFO - Checking for updates...
+2023-05-15 23:27:05,216 - INFO - Latest version: 1.0.2
+2023-05-15 23:27:06,453 - INFO - Up to date. ( 1.0.2 )

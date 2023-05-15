@@ -6,3 +6,6 @@ ___
 ___
 1.0.2
 + added auto update feature
+___
+1.0.3
++ Fixed menu
