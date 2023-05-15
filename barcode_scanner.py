@@ -18,7 +18,7 @@ logging.basicConfig(filename="barcode_log.txt", level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 def check_updates():
-    logging.info("Barcode Scanner started. Version: {}".format(CURRENT_VERSION))
+    
     logging.info("Checking for updates...")
     try:
         # Fetch the latest version from the version URL
@@ -53,6 +53,7 @@ def check_updates():
 
 
 def check_updates_at_start():
+    logging.info("Barcode Scanner started. Version: {}".format(CURRENT_VERSION))
     logging.info("Checking for updates...")
     try:
         # Fetch the latest version from the version URL
