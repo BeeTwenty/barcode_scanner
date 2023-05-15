@@ -4,3 +4,5 @@ ___
 1.0.1
 + fix bug
 ___
+1.0.2
++ added auto update feature

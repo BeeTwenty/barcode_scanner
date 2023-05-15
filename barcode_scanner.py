@@ -3,12 +3,15 @@ from tkinter import filedialog, messagebox, Menu
 import openpyxl
 import logging
 import requests
-import webbrowser
+import subprocess
+import os
+from tkinter import ttk
+import threading
 #developed by Sindre under the MIT license
 
 
 # set the version and the version URL and the download URL
-CURRENT_VERSION = "1.0.0"
+CURRENT_VERSION = "1.0.2"
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
 DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/releases/download/Production/BarcodeSetup.exe"
 
@@ -16,6 +19,75 @@ DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/releases/download/P
 # Add logging to file and console with timestamp and log level and format  (INFO and ERROR)
 logging.basicConfig(filename="barcode_log.txt", level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
+
+
+
+def download_and_install_update():
+    progress_window = tk.Toplevel()
+    progress_window.title("Update Progress")
+
+    label = tk.Label(progress_window, text="Downloading update...")
+    label.pack(padx=10, pady=10)
+    
+    label_file = tk.Label(progress_window, text="Downloading file...")
+    label_file.pack(padx=10, pady=5)
+
+    progress_bar = ttk.Progressbar(progress_window, length=300, mode="determinate")
+    progress_bar.pack(padx=10, pady=10)
+
+    def download_thread():
+        temp_file_path = "BarcodeSetup.exe"
+        logging.info("Downloading update...")
+        try:
+            response = requests.get(DOWNLOAD_URL, stream=True)
+            if response.status_code == 200:
+                with open(temp_file_path, 'wb') as f:
+                    total_size = int(response.headers.get('content-length', 0))
+                    block_size = 1024
+                    progress = 0
+
+                    for chunk in response.iter_content(chunk_size=1024):
+                        f.write(chunk)
+                        progress += block_size
+
+                        progress_bar["value"] = (progress / total_size) * 100
+                        progress_window.update_idletasks()
+                        label_file["text"] = "Downloading file: {:.1f}%".format((progress / total_size) * 100)
+
+                f.close()
+                
+                if os.path.isfile(temp_file_path):
+                    progress_window.destroy()
+                    subprocess.call([temp_file_path])
+
+                    os.remove(temp_file_path)
+
+                    if messagebox.askyesno("Update", "Update installed successfully. Do you want to exit and restart the application?"):
+                        window.quit()
+
+                    logging.info("Update installed successfully")
+                else:
+                    messagebox.showerror("Update Error", "Update installation failed.")
+                    logging.error("Update installation failed.")
+            else:
+                messagebox.showerror("Update Error", "Failed to download update.")
+                logging.error("Failed to download update.")
+
+        except requests.exceptions.RequestException as e:
+            messagebox.showerror("Update Error", "Error occurred while downloading update: " + str(e))
+            logging.error("Error occurred while downloading update: " + str(e))
+
+        except subprocess.CalledProcessError as e:
+            messagebox.showerror("Update Error", "Error occurred while installing update: " + str(e))
+            logging.error("Error occurred while installing update: " + str(e))
+
+        except Exception as e:
+            messagebox.showerror("Update Error", "An error occurred: " + str(e))
+            logging.error("An error occurred: " + str(e))
+    # Start the download thread
+    thread = threading.Thread(target=download_thread)
+    thread.start()
+
 
 def check_updates():
     
@@ -31,7 +103,7 @@ def check_updates():
         if latest_version > CURRENT_VERSION:
             d_response = messagebox.askquestion("Update Available", "A new version ({}) is available. Do you Want to download now?.".format(latest_version))
             if d_response == "yes":
-                webbrowser.open(DOWNLOAD_URL)
+                download_and_install_update()
             
             
            
@@ -66,7 +138,7 @@ def check_updates_at_start():
         if latest_version > CURRENT_VERSION:
             d_response = messagebox.askquestion("Update Available", "A new version ({}) is available. Do you Want to download now?.".format(latest_version))
             if d_response == "yes":
-                webbrowser.open(DOWNLOAD_URL)
+                download_and_install_update()
             
            
             logging.info("Update available. Please update. ( {} )".format(latest_version))
@@ -84,7 +156,7 @@ def check_updates_at_start():
         logging.error("Failed to check for updates.")
 
      
-        
+
 
 
 # Mark barcode in Excel sheet
@@ -190,8 +262,8 @@ barcode_entry.pack()
 # Bind the Return key event to scan_barcode function
 barcode_entry.bind("<Return>", scan_barcode)
 
+#check_updates_at_start()
 check_updates_at_start()
-
 # Run the main window
 window.mainloop()
 
