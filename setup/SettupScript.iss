@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Barcode Scanner"
-#define MyAppVersion "1.0.3"
+#define MyAppVersion "1.0.1"
 #define MyAppPublisher "Sindre Berge"
 #define MyAppURL "https://github.com/BeeTwenty/barcode_scanner"
 #define MyAppExeName "barcode_scanner.exe"
@@ -28,7 +28,7 @@ AllowNoIcons=yes
 LicenseFile=C:\Users\SBerge1\Documents\barcode_scanner\LICENSE
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
-OutputDir=C:\Users\sindr\Documents\barcode_scanner\setup
+OutputDir=C:\Users\SBerge1\Documents\barcode_scanner\setup
 OutputBaseFilename=BarcodeSetup
 SetupIconFile=C:\Users\SBerge1\Documents\barcode_scanner\barcode.ico
 Compression=lzma

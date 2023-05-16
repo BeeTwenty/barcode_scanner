@@ -217,3 +217,10 @@
 2023-05-15 23:27:05,216 - INFO - Latest version: 1.0.2
 2023-05-15 23:27:06,453 - INFO - Up to date. ( 1.0.2 )
 >>>>>>> 127651125591ce2679c5e5070e5ce48c44117631
+2023-05-16 07:13:25,693 - INFO - Main window created.
+2023-05-16 07:13:25,702 - INFO - Barcode Scanner started. Version: 1.0.0
+2023-05-16 07:13:25,703 - INFO - Checking for updates...
+2023-05-16 07:13:25,772 - INFO - Latest version: 1.0.1
+2023-05-16 07:13:28,492 - INFO - Downloading update...
+2023-05-16 07:13:28,492 - INFO - Update available. Please update. ( 1.0.1 )
+2023-05-16 07:13:34,798 - ERROR - An error occurred: invalid command name ".!toplevel.!label2"
