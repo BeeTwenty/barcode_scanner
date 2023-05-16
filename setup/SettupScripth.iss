@@ -25,12 +25,12 @@ DefaultDirName={autopf}\{#MyAppName}
 ChangesAssociations=yes
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-LicenseFile=C:\Users\SBerge1\Documents\barcode_scanner\LICENSE
+LicenseFile=C:\Users\sindr\Documents\barcode_scanner\LICENSE
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
 OutputDir=C:\Users\sindr\Documents\barcode_scanner\setup
 OutputBaseFilename=BarcodeSetup
-SetupIconFile=C:\Users\SBerge1\Documents\barcode_scanner\barcode.ico
+SetupIconFile=C:\Users\sindr\Documents\barcode_scanner\barcode.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -42,10 +42,10 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\SBerge1\Documents\barcode_scanner\dist\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\SBerge1\Documents\barcode_scanner\barcode.ico"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\SBerge1\Documents\barcode_scanner\changelog.md"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\SBerge1\Documents\barcode_scanner\README.txt"; DestDir: "{app}"; Flags: isreadme
+Source: "C:\Users\sindr\Documents\barcode_scanner\dist\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\sindr\Documents\barcode_scanner\barcode.ico"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\sindr\Documents\barcode_scanner\changelog.md"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\sindr\Documents\barcode_scanner\README.txt"; DestDir: "{app}"; Flags: isreadme
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
