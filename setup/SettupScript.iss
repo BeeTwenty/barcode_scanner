@@ -34,6 +34,9 @@ SetupIconFile=C:\Users\SBerge1\Documents\barcode_scanner\barcode.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
+; other setup options...
+; Enable logging
+SetupLogging=yes
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -60,6 +63,22 @@ Root: HKA; Subkey: "Software\Classes\Applications\{#MyAppExeName}\SupportedTypes
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
+
+[Code]
+function NextButtonClick(CurPage: Integer): Boolean;
+var
+  ResultCode: Integer;
+begin
+  if CurPage = wpSelectTasks then
+  begin
+    // Terminate the barcode program
+    Exec('taskkill', '/F /IM Barcode_Scanner.exe', '', SW_HIDE, 
+      ewNoWait, ResultCode);
+  end;
+  Result := True;
+end;
+
 [Run]
+
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 

@@ -12,7 +12,7 @@ import json
 
 
 # set the version and the version URL and the download URL
-CURRENT_VERSION = "1.0.3"
+CURRENT_VERSION = "1.0.3" 
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
 response = requests.get(VERSION_URL)
 latest_version = response.text.strip()
