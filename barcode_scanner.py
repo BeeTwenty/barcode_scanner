@@ -7,20 +7,23 @@ import subprocess
 import os
 from tkinter import ttk
 import threading
+import json
 #developed by Sindre under the MIT license
 
 
 # set the version and the version URL and the download URL
-CURRENT_VERSION = "1.0.1"
+CURRENT_VERSION = "1.0.2"
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
 response = requests.get(VERSION_URL)
 latest_version = response.text.strip()
 DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/releases/download/{}/BarcodeSetup.exe".format(latest_version)
+PREFERENCES_FILE = "preferences.json"
+DEBUG_MODE = False
+debug_mode = None
+DEFAULT_DEBUG_MODE = False
 
 
-# Add logging to file and console with timestamp and log level and format  (INFO and ERROR)
-logging.basicConfig(filename="barcode_log.txt", level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
+
 
 
 def download_and_install_update():
@@ -127,6 +130,8 @@ def check_updates():
         logging.error("Failed to check for updates.")
 
 def check_updates_at_start():
+    load_preferences()
+    setup_logging()
     logging.info("Barcode Scanner started. Version: {}".format(CURRENT_VERSION))
     logging.info("Checking for updates...")
     
@@ -147,9 +152,12 @@ def check_updates_at_start():
             
             logging.info("Up to date. ( {} )".format(latest_version))
 
+
     except requests.exceptions.RequestException:
         messagebox.showerror("Error", "Failed to check for updates.")
         logging.error("Failed to check for updates.")
+
+   
 
 # Mark barcode in Excel sheet
 def mark_barcode_in_excel(barcode, workbook_path, barcode_column):
@@ -188,6 +196,62 @@ def mark_barcode_in_excel(barcode, workbook_path, barcode_column):
         messagebox.showerror("Error", str(e))
         logging.error(f"Error marking barcode: {barcode}. Error: {str(e)}")
 
+# create save_preferences function for debug mode
+def save_preferences():
+    global DEBUG_MODE
+    DEBUG_MODE = debug_mode.get()
+    logging.info(f"Debug mode: {DEBUG_MODE}")
+    messagebox.showinfo("Debug Mode", f"Debug mode: {DEBUG_MODE}")
+
+    # Save preferences to JSON file
+    preferences = {"debug_mode": DEBUG_MODE}
+    with open(PREFERENCES_FILE, "w") as file:
+        json.dump(preferences, file)
+    logging.info("Preferences saved.")
+
+def load_preferences():
+    global DEBUG_MODE
+    try:
+        with open(PREFERENCES_FILE, "r") as file:
+            preferences = json.load(file)
+            DEBUG_MODE = preferences.get("debug_mode", DEFAULT_DEBUG_MODE)
+            logging.info(f"Loaded debug mode: {DEBUG_MODE}")
+    except FileNotFoundError:
+        logging.info("Preferences file not found. Using default settings.")
+        DEBUG_MODE = DEFAULT_DEBUG_MODE
+    except json.JSONDecodeError:
+        logging.error("Error parsing preferences file. Using default settings.")
+        DEBUG_MODE = DEFAULT_DEBUG_MODE
+
+def setup_logging():
+    log_file = "barcode_log.txt"
+    logger = logging.getLogger()  # Get the root logger
+
+    # Remove any existing handlers to avoid duplication
+    for handler in logger.handlers[:]:
+        logger.removeHandler(handler)
+
+    if DEBUG_MODE:
+        logger.setLevel(logging.INFO)
+    else:
+        logger.setLevel(logging.ERROR)
+
+    # Create a file handler and set its level to INFO
+    file_handler = logging.FileHandler(log_file)
+    file_handler.setLevel(logging.INFO)
+
+    # Create a console handler and set its level to ERROR
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.ERROR)
+
+    # Create a formatter and add it to the handlers
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    file_handler.setFormatter(formatter)
+    console_handler.setFormatter(formatter)
+
+    # Add the handlers to the logger
+    logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
 
 # Scan barcode from entry field and mark it in Excel sheet
 def scan_barcode(event):
@@ -212,6 +276,31 @@ def show_about_window():
     messagebox.showinfo("About", about_text) 
     logging.info("About window opened.")
 
+def show_preference_window():
+    # Create the preference window with option to activate/deactivate debug mode
+    preference_window = tk.Toplevel(window)
+    preference_window.title("Preferences")
+    preference_window.geometry("300x100")
+    preference_window.resizable(False, False)
+    preference_window.iconbitmap("barcode.ico")
+    preference_window.grab_set()  # Make the preference window the active window
+
+    global debug_mode  # Declare debug_mode as a global variable
+
+    # Create the debug mode checkbox
+    debug_mode = tk.IntVar(value=DEBUG_MODE)
+    debug_mode_checkbox = tk.Checkbutton(preference_window, text="Debug Mode", variable=debug_mode)
+    debug_mode_checkbox.grid(row=0, column=0, padx=10, pady=10)
+
+    # Load preferences
+    load_preferences()
+
+    # Create the save button
+    save_button = tk.Button(preference_window, text="Save", command=save_preferences)
+    save_button.grid(row=1, column=0, padx=10, pady=10)
+
+    logging.info("Preferences window opened.")
+
 # Create the main window
 window = tk.Tk() # Create the main window
 window.title("Barcode Scanner") # Set the window title 
@@ -227,6 +316,9 @@ help = Menu(menu, tearoff=0) # Create the Help menu item
 help.add_command(label="About", command=show_about_window)
 help.add_command(label="Update", command=check_updates) # Add About menu item to Help menu
 menu.add_cascade(label="Help", menu=help) # Add Help menu to menu bar
+options = Menu(menu, tearoff=0) # Create the Options menu item
+options.add_command(label="Preferences", command=show_preference_window) # Add Preferences menu item to Options menu
+menu.add_cascade(label="Options", menu=options) # Add Options menu to menu bar
 window.config(menu=menu) # Add menu bar to window
 
 # Create the GUI
@@ -260,5 +352,7 @@ barcode_entry.bind("<Return>", scan_barcode)
 
 #check_updates_at_start()
 check_updates_at_start()
+
+
 # Run the main window
 window.mainloop()

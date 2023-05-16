@@ -45,6 +45,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "C:\Users\SBerge1\Documents\barcode_scanner\dist\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\SBerge1\Documents\barcode_scanner\barcode.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\SBerge1\Documents\barcode_scanner\changelog.md"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\SBerge1\Documents\barcode_scanner\preferences.json"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\SBerge1\Documents\barcode_scanner\README.txt"; DestDir: "{app}"; Flags: isreadme
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
