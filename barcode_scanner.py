@@ -11,9 +11,11 @@ import threading
 
 
 # set the version and the version URL and the download URL
-CURRENT_VERSION = "1.0.2"
+CURRENT_VERSION = "1.0.0"
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
-DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/releases/download/Production/BarcodeSetup.exe"
+response = requests.get(VERSION_URL)
+latest_version = response.text.strip()
+DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/releases/download/{}/BarcodeSetup.exe".format(latest_version)
 
 
 # Add logging to file and console with timestamp and log level and format  (INFO and ERROR)
@@ -68,6 +70,7 @@ def download_and_install_update():
                     subprocess.call([temp_file_path])
 
                     os.remove(temp_file_path)
+                    
 
                     if messagebox.askyesno("Update", "Update installed successfully. Do you want to exit and restart the application?"):
                         window.quit()
@@ -94,6 +97,8 @@ def download_and_install_update():
     # Start the download thread
     thread = threading.Thread(target=download_thread)
     thread.start()
+    
+    
 
 
 def check_updates():
@@ -124,6 +129,7 @@ def check_updates():
 def check_updates_at_start():
     logging.info("Barcode Scanner started. Version: {}".format(CURRENT_VERSION))
     logging.info("Checking for updates...")
+    
     try:
         # Fetch the latest version from the version URL
         response = requests.get(VERSION_URL)
@@ -189,7 +195,7 @@ def scan_barcode(event):
     wb_path = workbook_entry.get()
     bc_column = column_entry.get()
     mark_barcode_in_excel(barcode, wb_path, bc_column)
-    barcode_entry.delete(0, tk.END)  # Clear the barcode entry field after scanning
+    barcode_entry.delete(0, tk.END) # Clear the barcode entry field after scanning
     logging.info(f"Barcode scanned: {barcode}")
 
 # Browse for workbook file
@@ -197,6 +203,7 @@ def browse_workbook():
     file_path = filedialog.askopenfilename(filetypes=[("Excel Files", "*.xlsx;*.xls")])
     workbook_entry.delete(0, tk.END)
     workbook_entry.insert(tk.END, file_path)
+    logging.info(f"Workbook selected: {file_path}")
 
 # Show about window with information about the program
 def show_about_window():
@@ -210,6 +217,9 @@ window = tk.Tk() # Create the main window
 window.title("Barcode Scanner") # Set the window title 
 window.geometry("400x300") # Set the window size 
 tk.Tk.iconbitmap(window, default="barcode.ico") # Set the window icon
+window.resizable(False, False) # Disable resizing of the window
+
+
 logging.info("Main window created.")
 # Create the menu bar
 menu = Menu(window) # Create the menu bar
@@ -252,5 +262,3 @@ barcode_entry.bind("<Return>", scan_barcode)
 check_updates_at_start()
 # Run the main window
 window.mainloop()
-
-

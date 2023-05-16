@@ -1,174 +1,37 @@
-2023-05-15 06:01:02,000 - INFO - Main window created.
-2023-05-15 06:01:02,009 - INFO - Checking for updates...
-2023-05-15 06:01:02,119 - INFO - Latest version: 1.0.9
-2023-05-15 06:01:04,861 - INFO - Update available. Please update. ( 1.0.9 )
-2023-05-15 06:02:28,100 - INFO - Main window created.
-2023-05-15 06:02:28,108 - INFO - Checking for updates...
-2023-05-15 06:02:28,177 - INFO - Latest version: 1.0.9
-2023-05-15 06:02:32,395 - INFO - Update available. Please update. ( 1.0.9 )
-2023-05-15 06:16:58,775 - INFO - Main window created.
-2023-05-15 06:16:58,783 - INFO - Checking for updates...
-2023-05-15 06:16:59,084 - INFO - Latest version: 1.0.0
-2023-05-15 06:16:59,084 - INFO - Up to date. ( 1.0.0 )
-2023-05-15 06:17:01,716 - INFO - Barcode Scanner started. Version: 1.0.3
-2023-05-15 06:17:01,716 - INFO - Checking for updates...
-2023-05-15 06:17:01,777 - INFO - Latest version: 1.0.0
-2023-05-15 06:17:03,059 - INFO - Up to date. ( 1.0.0 )
-2023-05-15 06:17:09,193 - INFO - About window opened.
-2023-05-15 06:53:06,914 - INFO - Main window created.
-2023-05-15 06:53:06,923 - INFO - Checking for updates...
-2023-05-15 06:53:07,065 - INFO - Latest version: <<<<<<< HEAD
-1.0.0
-=======
-1.0.0
->>>>>>> 6965c852b1e8e9b3e484427bf13f28de250d83cd
-2023-05-15 06:53:10,859 - INFO - Update available. Please update. ( <<<<<<< HEAD
-1.0.0
-=======
-1.0.0
->>>>>>> 6965c852b1e8e9b3e484427bf13f28de250d83cd )
-2023-05-15 06:53:56,093 - INFO - Main window created.
-2023-05-15 06:53:56,106 - INFO - Checking for updates...
-2023-05-15 06:53:56,180 - INFO - Latest version: <<<<<<< HEAD
-1.0.0
-=======
-1.0.0
->>>>>>> 6965c852b1e8e9b3e484427bf13f28de250d83cd
-2023-05-15 06:53:58,473 - INFO - Update available. Please update. ( <<<<<<< HEAD
-1.0.0
-=======
-1.0.0
->>>>>>> 6965c852b1e8e9b3e484427bf13f28de250d83cd )
-2023-05-15 06:57:19,166 - INFO - Main window created.
-2023-05-15 06:57:19,175 - INFO - Barcode Scanner started. Version: 1.0.0
-2023-05-15 06:57:19,175 - INFO - Checking for updates...
-2023-05-15 06:57:19,273 - INFO - Latest version: 1.0.0
-2023-05-15 06:57:19,273 - INFO - Up to date. ( 1.0.0 )
-2023-05-15 08:28:22,543 - INFO - Main window created.
-2023-05-15 08:28:53,215 - INFO - Main window created.
-2023-05-15 08:29:02,074 - INFO - Main window created.
-2023-05-15 08:29:05,002 - INFO - Downloading update...
-2023-05-15 08:29:20,522 - INFO - Main window created.
-2023-05-15 08:29:23,420 - INFO - Downloading update...
-2023-05-15 08:29:39,994 - INFO - Main window created.
-2023-05-15 08:29:41,944 - INFO - Downloading update...
-2023-05-15 08:31:08,942 - INFO - Main window created.
-2023-05-15 08:31:11,897 - INFO - Downloading update...
-2023-05-15 08:33:30,613 - INFO - Main window created.
-2023-05-15 08:33:33,201 - INFO - Downloading update...
-2023-05-15 08:33:59,043 - INFO - Main window created.
-2023-05-15 08:34:01,876 - INFO - Downloading update...
-2023-05-15 08:46:50,694 - INFO - Main window created.
-2023-05-15 08:48:43,215 - INFO - Main window created.
-2023-05-15 08:48:45,018 - INFO - Downloading update...
-2023-05-15 08:48:59,181 - INFO - Downloading update...
-2023-05-15 08:49:32,537 - INFO - Main window created.
-2023-05-15 08:49:34,334 - INFO - Downloading update...
-2023-05-15 08:52:08,171 - INFO - Main window created.
-2023-05-15 08:52:09,966 - INFO - Downloading update...
-2023-05-15 08:52:16,419 - INFO - Downloading update...
-2023-05-15 08:52:49,730 - INFO - Main window created.
-2023-05-15 08:52:51,221 - INFO - Downloading update...
-2023-05-15 08:54:24,909 - INFO - Main window created.
-2023-05-15 08:54:26,601 - INFO - Downloading update...
-2023-05-15 08:54:41,123 - INFO - Update installed successfully
-2023-05-15 08:56:43,472 - INFO - Main window created.
-2023-05-15 08:56:48,713 - INFO - Downloading update...
-2023-05-15 08:56:57,628 - INFO - Update installed successfully
-2023-05-15 08:57:15,612 - INFO - Main window created.
-2023-05-15 08:57:18,255 - INFO - Checking for updates...
-2023-05-15 08:57:18,572 - INFO - Latest version: 1.0.1
-2023-05-15 08:57:21,140 - INFO - Downloading update...
-2023-05-15 08:57:21,140 - INFO - Update available. Please update. ( 1.0.1 )
-2023-05-15 08:57:31,380 - INFO - Update installed successfully
-2023-05-15 08:57:53,808 - INFO - Main window created.
-2023-05-15 08:57:53,816 - INFO - Barcode Scanner started. Version: 1.0.0
-2023-05-15 08:57:53,816 - INFO - Checking for updates...
-2023-05-15 08:57:53,884 - INFO - Latest version: 1.0.1
-2023-05-15 08:57:56,418 - INFO - Update available. Please update. ( 1.0.1 )
-2023-05-15 08:58:01,048 - INFO - Main window created.
-2023-05-15 08:58:01,058 - INFO - Barcode Scanner started. Version: 1.0.0
-2023-05-15 08:58:01,058 - INFO - Checking for updates...
-2023-05-15 08:58:01,128 - INFO - Latest version: 1.0.1
-2023-05-15 08:58:02,235 - INFO - Downloading update...
-2023-05-15 08:58:02,235 - INFO - Update available. Please update. ( 1.0.1 )
-2023-05-15 08:58:16,230 - INFO - Update installed successfully
-2023-05-15 09:01:00,616 - INFO - Main window created.
-2023-05-15 09:01:00,626 - INFO - Barcode Scanner started. Version: 1.0.0
-2023-05-15 09:01:00,626 - INFO - Checking for updates...
-2023-05-15 09:01:00,697 - INFO - Latest version: 1.0.1
-2023-05-15 09:01:02,049 - INFO - Downloading update...
-2023-05-15 09:01:02,049 - INFO - Update available. Please update. ( 1.0.1 )
-2023-05-15 09:01:05,760 - ERROR - An error occurred: invalid command name ".!toplevel.!progressbar"
-2023-05-15 09:01:23,403 - INFO - Main window created.
-2023-05-15 09:01:23,411 - INFO - Barcode Scanner started. Version: 1.0.0
-2023-05-15 09:01:23,411 - INFO - Checking for updates...
-2023-05-15 09:01:23,478 - INFO - Latest version: 1.0.1
-2023-05-15 09:01:24,928 - INFO - Downloading update...
-2023-05-15 09:01:24,929 - INFO - Update available. Please update. ( 1.0.1 )
-2023-05-15 09:01:28,091 - ERROR - An error occurred: invalid command name ".!toplevel.!progressbar"
-2023-05-15 09:02:11,699 - INFO - Main window created.
-2023-05-15 09:02:11,707 - INFO - Barcode Scanner started. Version: 1.0.0
-2023-05-15 09:02:11,707 - INFO - Checking for updates...
-2023-05-15 09:02:11,775 - INFO - Latest version: 1.0.1
-2023-05-15 09:02:13,176 - INFO - Downloading update...
-2023-05-15 09:02:13,176 - INFO - Update available. Please update. ( 1.0.1 )
-2023-05-15 09:02:19,446 - ERROR - An error occurred: invalid command name ".!toplevel.!label2"
-2023-05-15 09:04:22,685 - INFO - Main window created.
-2023-05-15 09:04:22,697 - INFO - Barcode Scanner started. Version: 1.0.0
-2023-05-15 09:04:22,697 - INFO - Checking for updates...
-2023-05-15 09:04:22,974 - INFO - Latest version: 1.0.1
-2023-05-15 09:04:24,302 - INFO - Downloading update...
-2023-05-15 09:04:24,302 - INFO - Update available. Please update. ( 1.0.1 )
-2023-05-15 09:04:34,280 - INFO - Update installed successfully
-2023-05-15 09:05:12,811 - INFO - Main window created.
-2023-05-15 09:05:12,818 - INFO - Barcode Scanner started. Version: 1.0.0
-2023-05-15 09:05:12,818 - INFO - Checking for updates...
-2023-05-15 09:05:12,889 - INFO - Latest version: 1.0.1
-2023-05-15 09:05:13,978 - INFO - Downloading update...
-2023-05-15 09:05:13,978 - INFO - Update available. Please update. ( 1.0.1 )
-2023-05-15 09:05:17,610 - ERROR - An error occurred: invalid command name ".!toplevel.!label3"
-2023-05-15 09:09:43,250 - INFO - Main window created.
-2023-05-15 09:09:43,258 - INFO - Barcode Scanner started. Version: 1.0.0
-2023-05-15 09:09:43,258 - INFO - Checking for updates...
-2023-05-15 09:09:43,554 - INFO - Latest version: 1.0.1
-2023-05-15 09:09:44,526 - INFO - Downloading update...
-2023-05-15 09:09:44,526 - INFO - Update available. Please update. ( 1.0.1 )
-2023-05-15 09:09:51,500 - ERROR - An error occurred: invalid command name ".!toplevel.!label2"
-2023-05-15 09:09:53,799 - INFO - Checking for updates...
-2023-05-15 09:09:53,859 - INFO - Latest version: 1.0.1
-2023-05-15 09:09:55,276 - INFO - Downloading update...
-2023-05-15 09:09:55,276 - INFO - Update available. Please update. ( 1.0.1 )
-2023-05-15 09:10:04,718 - INFO - Update installed successfully
-2023-05-15 09:11:35,942 - INFO - Main window created.
-2023-05-15 09:11:35,950 - INFO - Barcode Scanner started. Version: 1.0.0
-2023-05-15 09:11:35,950 - INFO - Checking for updates...
-2023-05-15 09:11:36,019 - INFO - Latest version: 1.0.1
-2023-05-15 09:11:37,166 - INFO - Downloading update...
-2023-05-15 09:11:37,166 - INFO - Update available. Please update. ( 1.0.1 )
-2023-05-15 09:11:53,634 - INFO - Update installed successfully
-2023-05-15 09:11:58,358 - INFO - Checking for updates...
-2023-05-15 09:11:58,418 - INFO - Latest version: 1.0.1
-2023-05-15 09:11:59,597 - INFO - Downloading update...
-2023-05-15 09:11:59,597 - INFO - Update available. Please update. ( 1.0.1 )
-2023-05-15 09:12:17,159 - INFO - Update installed successfully
-2023-05-15 09:31:54,939 - INFO - Main window created.
-2023-05-15 09:31:54,949 - INFO - Barcode Scanner started. Version: 1.0.2
-2023-05-15 09:31:54,949 - INFO - Checking for updates...
-2023-05-15 09:31:55,021 - INFO - Latest version: 1.0.2
-2023-05-15 09:31:55,021 - INFO - Up to date. ( 1.0.2 )
-2023-05-15 09:32:05,860 - INFO - Main window created.
-2023-05-15 09:32:05,867 - INFO - Barcode Scanner started. Version: 1.0.1
-2023-05-15 09:32:05,867 - INFO - Checking for updates...
-2023-05-15 09:32:05,942 - INFO - Latest version: 1.0.2
-2023-05-15 09:32:07,984 - INFO - Downloading update...
-2023-05-15 09:32:07,985 - INFO - Update available. Please update. ( 1.0.2 )
-2023-05-15 09:32:19,093 - INFO - Update installed successfully
-2023-05-15 09:35:16,594 - INFO - Main window created.
-2023-05-15 09:35:16,604 - INFO - Barcode Scanner started. Version: 1.0.1
-2023-05-15 09:35:16,604 - INFO - Checking for updates...
-2023-05-15 09:35:17,011 - INFO - Latest version: 1.0.2
-2023-05-15 09:35:18,185 - INFO - Downloading update...
-2023-05-15 09:35:18,185 - INFO - Update available. Please update. ( 1.0.2 )
-2023-05-15 09:35:23,914 - INFO - Download completed.
-2023-05-15 09:35:28,936 - INFO - Update installed successfully
+2023-05-15 09:40:28,936 - INFO - Main window created.
+2023-05-15 09:40:28,944 - INFO - Barcode Scanner started. Version: 1.0.2
+2023-05-15 09:40:28,944 - INFO - Checking for updates...
+2023-05-15 09:40:29,192 - INFO - Latest version: 1.0.2
+2023-05-15 09:40:29,192 - INFO - Up to date. ( 1.0.2 )
+2023-05-15 09:40:32,620 - INFO - Checking for updates...
+2023-05-15 09:40:32,681 - INFO - Latest version: 1.0.2
+2023-05-15 09:40:33,765 - INFO - Up to date. ( 1.0.2 )
+2023-05-16 06:37:31,746 - INFO - Main window created.
+2023-05-16 06:37:31,754 - INFO - Barcode Scanner started. Version: 1.0.0
+2023-05-16 06:37:31,754 - INFO - Checking for updates...
+2023-05-16 06:37:32,036 - INFO - Latest version: 1.0.3
+2023-05-16 06:37:33,649 - INFO - Downloading update...
+2023-05-16 06:37:33,649 - INFO - Update available. Please update. ( 1.0.3 )
+2023-05-16 06:37:35,571 - ERROR - Failed to download update.
+2023-05-16 06:40:11,555 - INFO - Main window created.
+2023-05-16 06:40:11,564 - INFO - Barcode Scanner started. Version: 1.0.0
+2023-05-16 06:40:11,564 - INFO - Checking for updates...
+2023-05-16 06:40:11,633 - INFO - Latest version: 1.0.3
+2023-05-16 06:40:12,880 - INFO - Downloading update...
+2023-05-16 06:40:37,343 - INFO - Main window created.
+2023-05-16 06:40:37,353 - INFO - Barcode Scanner started. Version: 1.0.0
+2023-05-16 06:40:37,353 - INFO - Checking for updates...
+2023-05-16 06:40:37,422 - INFO - Latest version: 1.0.3
+2023-05-16 06:40:38,767 - INFO - Downloading update...
+2023-05-16 07:07:01,928 - INFO - Main window created.
+2023-05-16 07:07:01,938 - INFO - Barcode Scanner started. Version: 1.0.0
+2023-05-16 07:07:01,938 - INFO - Checking for updates...
+2023-05-16 07:07:01,998 - INFO - Latest version: 1.0.3
+2023-05-16 07:07:15,827 - INFO - Downloading update...
+2023-05-16 07:07:15,827 - INFO - Update available. Please update. ( 1.0.3 )
+2023-05-16 07:07:17,518 - ERROR - Failed to download update.
+2023-05-16 07:09:39,468 - INFO - Main window created.
+2023-05-16 07:09:39,476 - INFO - Barcode Scanner started. Version: 1.0.0
+2023-05-16 07:09:39,476 - INFO - Checking for updates...
+2023-05-16 07:09:39,537 - INFO - Latest version: 1.0.3
+2023-05-16 07:09:45,230 - INFO - Update available. Please update. ( 1.0.3 )
