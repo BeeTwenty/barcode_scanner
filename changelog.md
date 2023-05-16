@@ -9,3 +9,6 @@ ___
 ___
 1.0.4
 + Minor bug fixes to installer
+___
+1.0.5
++ better error handling

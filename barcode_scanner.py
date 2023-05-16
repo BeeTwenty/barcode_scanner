@@ -12,7 +12,7 @@ import json
 
 
 # set the version and the version URL and the download URL
-CURRENT_VERSION = "1.0.4" 
+CURRENT_VERSION = "1.0.5" 
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
 response = requests.get(VERSION_URL)
 latest_version = response.text.strip()
@@ -84,20 +84,21 @@ def download_and_install_update():
                     messagebox.showerror("Update Error", "Update installation failed.")
                     logging.error("Update installation failed.")
             else:
-                messagebox.showerror("Update Error", "Failed to download update.")
-                logging.error("Failed to download update.")
+                messagebox.showerror("Update Error", "Failed to download update. Reason: {}".format(response.reason))
+                logging.error("Failed to download update. Reason: {}".format(response.reason))
 
         except requests.exceptions.RequestException as e:
-            messagebox.showerror("Update Error", "Error occurred while downloading update: " + str(e))
-            logging.error("Error occurred while downloading update: " + str(e))
+            messagebox.showerror("Update Error", "Error occurred while downloading update: {} ".format(response.reason))
+            logging.error("Error occurred while downloading update: {} ".format(response.reason))
+
 
         except subprocess.CalledProcessError as e:
-            messagebox.showerror("Update Error", "Error occurred while installing update: " + str(e))
-            logging.error("Error occurred while installing update: " + str(e))
+            messagebox.showerror("Update Error", "Error occurred while installing update: {} ".format(response.reason))
+            logging.error("Error occurred while installing update: {} ".format(response.reason))
 
         except Exception as e:
-            messagebox.showerror("Update Error", "An error occurred: " + str(e))
-            logging.error("An error occurred: " + str(e))
+            messagebox.showerror("Update Error", "An error occurred: {} ".format(response.reason))
+            logging.error("An error occurred: {} ".format(response.reason))
     # Start the download thread
     thread = threading.Thread(target=download_thread)
     thread.start()

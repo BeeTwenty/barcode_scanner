@@ -42,3 +42,5 @@
 2023-05-16 13:14:00,238 - INFO - Installing update...
 2023-05-16 13:14:14,711 - INFO - Update installed successfully. Restarting application.
 2023-05-16 13:14:14,712 - INFO - Update installed successfully
+2023-05-16 14:17:09,014 - ERROR - Failed to download update. Reason: Not Found
+2023-05-16 14:19:18,337 - ERROR - Failed to download update. Reason: Not Found
