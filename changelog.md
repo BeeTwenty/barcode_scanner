@@ -6,3 +6,6 @@ ___
 ___
 1.0.3
 + Minor bug fixes
+___
+1.0.4
++ Minor bug fixes to installer

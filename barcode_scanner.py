@@ -12,7 +12,7 @@ import json
 
 
 # set the version and the version URL and the download URL
-CURRENT_VERSION = "1.0.3" 
+CURRENT_VERSION = "1.0.4" 
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
 response = requests.get(VERSION_URL)
 latest_version = response.text.strip()
@@ -72,7 +72,7 @@ def download_and_install_update():
                     progress_window.destroy()
                     # Run the installer and close the program
                     logging.info("Installing update...")   
-                    subprocess.check_call([temp_file_path, "/silent", "/closeapplications", "/log", "log.txt"])
+                    subprocess.check_call([temp_file_path])
                     os.remove(temp_file_path)
                     
 
