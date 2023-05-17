@@ -12,7 +12,7 @@ import socket
 #developed by Sindre under the MIT license
 
 
-
+# check if there is internet connection 
 def check_internett_connection():
     try:
         socket.create_connection(("www.google.com", 80))
@@ -20,10 +20,12 @@ def check_internett_connection():
     except OSError:
         pass
     return False
+
 latest_version = None
 # set the version and the version URL and the download URL
 CURRENT_VERSION = "1.0.6" 
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
+
 if check_internett_connection():
     
         response = requests.get(VERSION_URL)
@@ -31,7 +33,7 @@ if check_internett_connection():
 else: 
     logging.info("No internet connection. Skipping update check.")
 
-
+# set the download URL, preferences file and debug mode
 DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/releases/download/{}/BarcodeSetup.exe".format(latest_version)
 PREFERENCES_FILE = "preferences.json"
 DEBUG_MODE = False
@@ -44,56 +46,56 @@ DEFAULT_DEBUG_MODE = False
 
 def download_and_install_update():
     # Create a new window for the progress bar
-    progress_window = tk.Toplevel()
-    progress_window.title("Update Progress")
-    progress_window.resizable(False, False)
-    progress_window.geometry("400x150")
-    progress_window.grab_set()
-    progress_window.focus_set()
+    progress_window = tk.Toplevel() # Create a new window
+    progress_window.title("Update Progress") # Set the title
+    progress_window.resizable(False, False)# Disable resizing
+    progress_window.geometry("400x150") # Set the size
+    progress_window.grab_set()# Make the window modal
+    progress_window.focus_set() # Make the window modal 
     
-    label = tk.Label(progress_window, text="Downloading update...")
-    label.pack(padx=10, pady=10)
+    label = tk.Label(progress_window, text="Downloading update...") # Create a label and add it to the window 
+    label.pack(padx=10, pady=10) # Set the padding
 
     label_file = tk.Label(progress_window, text="Downloading file...")
     label_file.pack(padx=10, pady=5)
 
-    progress_bar = ttk.Progressbar(progress_window, length=300, mode="determinate")
+    progress_bar = ttk.Progressbar(progress_window, length=300, mode="determinate") # Create a progress bar and add it to the window 
     progress_bar.pack(padx=10, pady=10)
 
-
+# Create a thread for downloading the update and installing it 
     def download_thread():
-        temp_file_path = "BarcodeSetup.exe"
-        logging.info("Downloading update...")
-        try:
-            response = requests.get(DOWNLOAD_URL, stream=True)
-            if response.status_code == 200:
-                with open(temp_file_path, 'wb') as f:
-                    total_size = int(response.headers.get('content-length', 0))
-                    block_size = 1024
-                    progress = 0
+        temp_file_path = "BarcodeSetup.exe" # Set the path for the temporary file
+        logging.info("Downloading update...") # Log the download
+        try: # Try to download the update
+            response = requests.get(DOWNLOAD_URL, stream=True) # Download the update and stream it to the temporary file path 
+            if response.status_code == 200: # Check if the download was successful 
+                with open(temp_file_path, 'wb') as f: # Open the temporary file path and write the update to it 
+                    total_size = int(response.headers.get('content-length', 0)) # Get the total size of the update 
+                    block_size = 1024 # Set the block size to 1024 bytes 
+                    progress = 0 # Set the progress to 0
 
 
-                    for chunk in response.iter_content(chunk_size=1024):
-                        f.write(chunk)
-                        progress += block_size
+                    for chunk in response.iter_content(chunk_size=1024): # Iterate over the update in chunks of 1024 bytes 
+                        f.write(chunk) # Write the chunk to the temporary file path 
+                        progress += block_size # Add the block size to the progress 
 
-                        progress_bar["value"] = (progress / total_size) * 100
-                        progress_window.update_idletasks()
-                        label_file["text"] = "Downloading file: {:.1f}%".format((progress / total_size) * 100)
+                        progress_bar["value"] = (progress / total_size) * 100 # Update the progress bar 
+                        progress_window.update_idletasks() # Update the window 
+                        label_file["text"] = "Downloading file: {:.1f}%".format((progress / total_size) * 100) # Update the label 
 
 
-                f.close()
+                f.close() # Close the file 
                 logging.info("Download completed.")
-                if os.path.isfile(temp_file_path):
-                    progress_window.destroy()
+                if os.path.isfile(temp_file_path): # Check if the temporary file exists 
+                    progress_window.destroy() # Destroy the progress window 
                     # Run the installer and close the program
                     logging.info("Installing update...")   
-                    subprocess.check_call([temp_file_path])
-                    os.remove(temp_file_path)
+                    subprocess.check_call([temp_file_path]) # Run the installer 
+                    os.remove(temp_file_path) # Remove the temporary file 
                     
 
                     if messagebox.askyesno("Update", "Update installed successfully. Do you want to exit and restart the application?"):
-                        window.quit()
+                        window.quit() # Quit the program if the user clicks yes 
                         logging.info("Update installed successfully. Restarting application.")
                     logging.info("Update installed successfully")
                 else:
@@ -116,8 +118,8 @@ def download_and_install_update():
             messagebox.showerror("Update Error", "An error occurred: {} ".format(response.reason))
             logging.error("An error occurred: {} ".format(response.reason))
     # Start the download thread
-    thread = threading.Thread(target=download_thread)
-    thread.start()
+    thread = threading.Thread(target=download_thread) # Create a thread for downloading the update 
+    thread.start() # Start the thread 
     
     
 
