@@ -11,6 +11,8 @@ import json
 import socket
 #developed by Sindre under the MIT license
 
+
+
 def check_internett_connection():
     try:
         socket.create_connection(("www.google.com", 80))
@@ -18,22 +20,23 @@ def check_internett_connection():
     except OSError:
         pass
     return False
+latest_version = None
 # set the version and the version URL and the download URL
-CURRENT_VERSION = "1.0.5" 
+CURRENT_VERSION = "1.0.6" 
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
 if check_internett_connection():
-    try:
+    
         response = requests.get(VERSION_URL)
-    except requests.exceptions.RequestException:
-        logging.error("Failed to connect to internett.")
+        latest_version = response.text.strip()
+else: 
+    logging.info("No internet connection. Skipping update check.")
 
-latest_version = response.text.strip()
+
 DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/releases/download/{}/BarcodeSetup.exe".format(latest_version)
 PREFERENCES_FILE = "preferences.json"
 DEBUG_MODE = False
 debug_mode = None
 DEFAULT_DEBUG_MODE = False
-
 
 
 
@@ -120,32 +123,39 @@ def download_and_install_update():
 
 
 def check_updates():
-    if check_internett_connection():
 
-        logging.info("Checking for updates...")
-        try:
-            # Fetch the latest version from the version URL
-            response = requests.get(VERSION_URL)
-            latest_version = response.text.strip()
-            logging.info(f"Latest version: {latest_version}")      
-    
+    try:
+        if check_internett_connection():
 
-            # Compare the current version with the latest version
-            if latest_version > CURRENT_VERSION:
-                d_response = messagebox.askquestion("Update Available", "A new version ({}) is available. Do you Want to download now?.".format(latest_version))
-                if d_response == "yes":
-                    download_and_install_update() 
-                logging.info("Update available. Please update. ( {} )".format(latest_version))
-    
-            else:
-                messagebox.showinfo("Up to Date", "You have the latest version of the program.")
-                logging.info("Up to date. ( {} )".format(latest_version))
+            logging.info("Checking for updates...")
+            try:
+                # Fetch the latest version from the version URL
+                response = requests.get(VERSION_URL)
+                latest_version = response.text.strip()
+                logging.info(f"Latest version: {latest_version}")      
+        
 
-        except requests.exceptions.RequestException:
-            messagebox.showerror("Error", "Failed to check for updates.")
-            logging.error("Failed to check for updates.")
-    else:
-        logging.error("No Internet")
+                # Compare the current version with the latest version
+                if latest_version > CURRENT_VERSION:
+                    d_response = messagebox.askquestion("Update Available", "A new version ({}) is available. Do you Want to download now?.".format(latest_version))
+                    if d_response == "yes":
+                        download_and_install_update() 
+                    logging.info("Update available. Please update. ( {} )".format(latest_version))
+        
+                else:
+                    messagebox.showinfo("Up to Date", "You have the latest version of the program.")
+                    logging.info("Up to date. ( {} )".format(latest_version))
+
+            except requests.exceptions.RequestException:
+                messagebox.showerror("Error", "Failed to check for updates.")
+                logging.error("Failed to check for updates.")
+        else:
+            
+            logging.error("No Internet")
+            messagebox.showerror("Error", "No Internet")
+    except requests.exceptions.RequestException as e:
+        messagebox.showerror("Error", "Failed to check for updates. Reaseon: {str(e)}")
+        logging.error("Failed to check for updates.") 
 
 def check_updates_at_start():
     load_preferences()
@@ -154,7 +164,10 @@ def check_updates_at_start():
     if check_internett_connection():
         logging.info("Checking for updates...")
     
-        try:
+    try:
+        if check_internett_connection():
+            logging.info("Checking for updates...")
+        
             # Fetch the latest version from the version URL
             response = requests.get(VERSION_URL)
             latest_version = response.text.strip()
@@ -162,21 +175,17 @@ def check_updates_at_start():
 
             # Compare the current version with the latest version
             if latest_version > CURRENT_VERSION:
-                d_response = messagebox.askquestion("Update Available", "A new version ({}) is available. Do you Want to download now?.".format(latest_version))
+                d_response = messagebox.askquestion("Update Available", "A new version ({}) is available. Do you want to download now?".format(latest_version))
                 if d_response == "yes":
                     download_and_install_update()
-                logging.info("Update available. Please update. ( {} )".format(latest_version))
-
+                logging.info("Update available. Please update. ({})".format(latest_version))
             else:
-                
-                logging.info("Up to date. ( {} )".format(latest_version))
-
-
-        except requests.exceptions.RequestException:
-            messagebox.showerror("Error", "Failed to check for updates.")
-            logging.error("Failed to check for updates.")
-    else:
-        logging.info("No internet connection. Skipping update check.")
+                logging.info("Up to date. ({})".format(latest_version))
+        else:
+            logging.info("No internet connection. Skipping update check.")
+    except requests.exceptions.RequestException:
+        messagebox.showerror("Error", "Failed to check for updates.")
+        logging.error("Failed to check for updates.")
    
 
 # Mark barcode in Excel sheet

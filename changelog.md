@@ -12,3 +12,7 @@ ___
 ___
 1.0.5
 + better error handling
+___
+1.0.5
++ Fixed an issue where program could not run without internet, now it works with internet.
+___

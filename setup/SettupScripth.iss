@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Barcode Scanner"
-#define MyAppVersion "1.0.3"
+#define MyAppVersion "1.0.6"
 #define MyAppPublisher "Sindre Berge"
 #define MyAppURL "https://github.com/BeeTwenty/barcode_scanner"
 #define MyAppExeName "barcode_scanner.exe"
@@ -34,6 +34,9 @@ SetupIconFile=C:\Users\sindr\Documents\barcode_scanner\barcode.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
+; other setup options...
+; Enable logging
+SetupLogging=yes
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -45,6 +48,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "C:\Users\sindr\Documents\barcode_scanner\dist\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\sindr\Documents\barcode_scanner\barcode.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\sindr\Documents\barcode_scanner\changelog.md"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\sindr\Documents\barcode_scanner\preferences.json"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\sindr\Documents\barcode_scanner\README.txt"; DestDir: "{app}"; Flags: isreadme
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
@@ -59,6 +63,22 @@ Root: HKA; Subkey: "Software\Classes\Applications\{#MyAppExeName}\SupportedTypes
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
+
+[Code]
+function NextButtonClick(CurPage: Integer): Boolean;
+var
+  ResultCode: Integer;
+begin
+  if CurPage = wpSelectTasks then
+  begin
+    // Terminate the barcode program
+    Exec('taskkill', '/F /IM Barcode_Scanner.exe', '', SW_HIDE, 
+      ewNoWait, ResultCode);
+  end;
+  Result := True;
+end;
+
 [Run]
+
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
