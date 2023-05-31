@@ -16,3 +16,8 @@ ___
 1.0.5
 + Fixed an issue where program could not run without internet, now it works with internet.
 ___
+1.0.6
++ bug fixes
+___
+1.0.7
++ error handling

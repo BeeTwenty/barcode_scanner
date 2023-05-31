@@ -9,6 +9,15 @@ from tkinter import ttk
 import threading
 import json
 import socket
+import sentry_sdk
+sentry_sdk.init(
+    dsn="https://afda3c00fe43433fb75475cec5f33e8a@o4505277052354560.ingest.sentry.io/4505277322952704",
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0
+)
 #developed by Sindre under the MIT license
 
 
@@ -23,7 +32,7 @@ def check_internett_connection():
 
 latest_version = None
 # set the version and the version URL and the download URL
-CURRENT_VERSION = "1.0.6" 
+CURRENT_VERSION = "1.0.7" 
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
 
 if check_internett_connection():
