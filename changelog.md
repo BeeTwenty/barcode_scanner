@@ -21,3 +21,6 @@ ___
 ___
 1.0.7
 + error handling
+___
+1.0.8
++ removed sentry for now 
