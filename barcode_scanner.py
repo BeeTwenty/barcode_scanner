@@ -24,7 +24,8 @@ def check_internett_connection():
 
 latest_version = None
 # set the version and the version URL and the download URL
-CURRENT_VERSION = "1.0.8" 
+CURRENT_VERSION = "1.1.0" 
+'''
 VERSION_URL = "https://raw.githubusercontent.com/BeeTwenty/barcode_scanner/master/version.txt"
 
 if check_internett_connection():
@@ -36,6 +37,7 @@ else:
 
 # set the download URL, preferences file and debug mode
 DOWNLOAD_URL = "https://github.com/BeeTwenty/barcode_scanner/releases/download/{}/BarcodeSetup.exe".format(latest_version)
+'''
 PREFERENCES_FILE = "preferences.json"
 DEBUG_MODE = False
 debug_mode = None
@@ -44,7 +46,7 @@ DEFAULT_DEBUG_MODE = False
 
 
 
-
+'''
 def download_and_install_update():
     # Create a new window for the progress bar
     progress_window = tk.Toplevel() # Create a new window
@@ -190,40 +192,43 @@ def check_updates_at_start():
         messagebox.showerror("Error", "Failed to check for updates.")
         logging.error("Failed to check for updates.")
    
-
+'''
 # Mark barcode in Excel sheet
-def mark_barcode_in_excel(barcode, workbook_path, barcode_column):
+def mark_barcode_in_excel(barcode, workbook_path, barcode_column, box_value=None):
     try:
         workbook = openpyxl.load_workbook(workbook_path)
         sheet = workbook.active
         logging.info(f"Workbook opened: {workbook_path}")
         barcode_found = False
 
-        # Loop through all cells in the barcode column
-        for cell in sheet[barcode_column]:
-            if cell.value == barcode:
-                cell.fill = openpyxl.styles.PatternFill(start_color="00FF00", fill_type="solid")  # Mark cell as green
-                barcode_found = True
-                logging.info(f"Barcode found: {barcode}")
+        # Loop through all cells in the barcode and box columns
+        for row in sheet.iter_rows(min_row=2, max_row=sheet.max_row, min_col=2, max_col=7):
+            tape, box = row[1].value, row[4].value  # Assuming 'TAPE' is in column B and 'C.BARC' is in column E
+
+            if tape == barcode:
+                if box_value:
+                    if box == box_value:
+                        row[1].fill = openpyxl.styles.PatternFill(start_color="00FF00", fill_type="solid")
+                        barcode_found = True
+                        logging.info(f"Barcode found in specified box: {barcode}")
+                else:
+                    row[1].fill = openpyxl.styles.PatternFill(start_color="00FF00", fill_type="solid")
+                    barcode_found = True
+                    logging.info(f"Barcode found: {barcode}")
 
         # Save the workbook
         workbook.save(workbook_path)
         workbook.close()
         logging.info(f"Workbook saved: {workbook_path} and closed.")
 
-        # Show error message if barcode not found or log barcode marked
         if not barcode_found:
             messagebox.showerror("Error", "Barcode not found.")
             logging.error(f"Barcode not found: {barcode}")
-        else:
-            logging.info(f"Barcode marked: {barcode}")
 
-    # Show error message if workbook not found and log error
     except FileNotFoundError:
         messagebox.showerror("Error", "Workbook not found.")
         logging.error(f"Workbook not found: {workbook_path}")
-    
-    # Show error message if any other error and log error
+
     except Exception as e:
         messagebox.showerror("Error", str(e))
         logging.error(f"Error marking barcode: {barcode}. Error: {str(e)}")
@@ -290,8 +295,9 @@ def scan_barcode(event):
     barcode = barcode_entry.get()
     wb_path = workbook_entry.get()
     bc_column = column_entry.get()
-    mark_barcode_in_excel(barcode, wb_path, bc_column)
-    barcode_entry.delete(0, tk.END) # Clear the barcode entry field after scanning
+    box_value = box_entry.get() if box_mode.get() else None
+    mark_barcode_in_excel(barcode, wb_path, bc_column, box_value)
+    barcode_entry.delete(0, tk.END)  # Clear the barcode entry field after scanning
     logging.info(f"Barcode scanned: {barcode}")
 
 # Browse for workbook file
@@ -336,7 +342,7 @@ def show_preference_window():
 # Create the main window
 window = tk.Tk() # Create the main window
 window.title("Barcode Scanner") # Set the window title 
-window.geometry("400x300") # Set the window size 
+window.geometry("400x350") # Set the window size 
 tk.Tk.iconbitmap(window, default="barcode.ico") # Set the window icon
 window.resizable(False, False) # Disable resizing of the window
 
@@ -346,7 +352,7 @@ logging.info("Main window created.")
 menu = Menu(window) # Create the menu bar
 help = Menu(menu, tearoff=0) # Create the Help menu item
 help.add_command(label="About", command=show_about_window)
-help.add_command(label="Update", command=check_updates) # Add About menu item to Help menu
+#help.add_command(label="Update", command=check_updates) # Add About menu item to Help menu
 menu.add_cascade(label="Help", menu=help) # Add Help menu to menu bar
 options = Menu(menu, tearoff=0) # Create the Options menu item
 options.add_command(label="Preferences", command=show_preference_window) # Add Preferences menu item to Options menu
@@ -371,6 +377,16 @@ label_column.pack(pady=10)
 column_entry = tk.Entry(window)
 column_entry.pack()
 
+# Add Box Mode Checkbox and Entry
+box_mode = tk.IntVar()  # 0 for off, 1 for on
+box_mode_checkbox = tk.Checkbutton(window, text="Box Mode", variable=box_mode)
+box_mode_checkbox.pack(pady=10)
+
+label_box = tk.Label(window, text="Enter Box:")
+label_box.pack(pady=10)
+box_entry = tk.Entry(window)
+box_entry.pack()
+
 # Create the barcode entry field 
 label_barcode = tk.Label(window, text="Scan Barcode:")
 label_barcode.pack(pady=10)
@@ -383,7 +399,7 @@ barcode_entry.pack()
 barcode_entry.bind("<Return>", scan_barcode)
 
 #check_updates_at_start()
-check_updates_at_start()
+#check_updates_at_start()
 
 
 # Run the main window
